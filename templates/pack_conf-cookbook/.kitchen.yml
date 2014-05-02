@@ -1,0 +1,35 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+
+platforms:
+  - name: opscode-ubuntu-14.04
+    driver_config:
+      box: opscode-ubuntu-14.04
+      box_url: http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_ubuntu-14.04_chef-provisionerless.box
+
+  - name: centos-6.5
+    driver_config:
+      box: opscode-centos-6.5
+      box_url: http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_centos-6.5_chef-provisionerless.box
+
+  - name: centos-5.10
+    run_list:
+      - recipe[yum-repoforge]
+    driver_config:
+      box: opscode-centos-5.10
+      box_url: http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_centos-5.10_chef-provisionerless.box
+
+#Due to compile errors cause libevent-devel is too old on centos for xxx_template_xxx 1.8 we force package install 
+# thats why we added yum-repoforge
+suites:
+  - name: default
+    run_list: 
+      - recipe[xxx_template_xxx::default]
+    attributes:
+      xxx_template_xxx:
+        install_method: package
+
