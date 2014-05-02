@@ -105,9 +105,9 @@ function clone() {
   for file in $( grep -R ${OLDMODULESTRING} ${NEWMODULE} | cut -d ":" -f 1 | uniq ) ; do
     # Detect OS
     if [ -f /mach_kernel ] ; then
-      sed -i "" -e "s/${OLDMODULESTRING}/${NEWMODULE}/g" ${file} && echo "Changed ${file}"
+      sed -i "" -e "s/${OLDMODULESTRING}/${name}/g" ${file} && echo "Changed ${file}"
     else
-      sed -i "s/${OLDMODULESTRING}/${NEWMODULE}/g" ${file} && echo "Changed ${file}"
+      sed -i "s/${OLDMODULESTRING}/${name}/g" ${file} && echo "Changed ${file}"
     fi
 
   done
