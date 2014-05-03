@@ -11,23 +11,24 @@ Platform with a package named 'xxx_template_xxx'.
 Attributes
 ----------
 
-- `node['xxx_template_xxx']['package']`
+- `node['xxx_template_xxx']['package_name']`
   The package name (if different from the cookbook name).
   Default: 'xxx_template_xxx'
 
-- `node['xxx_template_xxx']['version']`
+- `node['xxx_template_xxx']['package_version']`
   The package version, used in the version attribute of package resource.
   Can be any valid version number for the target distro.
   Default: nil. 
-  Note that if the argument `absent` (see below) is set to `true`, the
-    package is removed, whatever the value of the `version` attribute.
+  Note that if the attribute `package_action` (see below) is set to `:remove` or
+    `:purge`, the package is removed, whatever the value of the `package_version`
+    attribute.
   Default: nil
 
-- `node['xxx_template_xxx']['absent']`
-  Set to `true` to remove package(s) and files installed by this cookbook.
-  Default: false
+- `node['xxx_template_xxx']['package_action']`
+  Set to any valid action (ie., `:remove` to remove package(s) and files installed by this cookbook.
+  Default: `:install`
 
-- `node['xxx_template_xxx']['config_file']`
+- `node['xxx_template_xxx']['config_file_path']`
   Full path to main configuration file.
   Default: '/etc/xxx_template_xxx/xxx_template_xxx.conf'
 
@@ -53,7 +54,7 @@ Attributes
   Sets the content of `cookbook_file` attribute for main configuration file
   Default: nil 
 
-- `node['xxx_template_xxx']['config_dir']`
+- `node['xxx_template_xxx']['config_dir_path']`
   Main configuration directory.
   Default: '/etc/xxx_template_xxx'
 
@@ -62,9 +63,14 @@ Attributes
   **recursively** from the specified source `remote_directory`.
   Default: nil
 
-- `node['xxx_template_xxx']['source_dir_purge']`
+- `node['xxx_template_xxx']['config_dir_purge']`
   If set to `true` (default `false`) the configuration directory files
     that are not managed by this cookbook will be removed.
+  Default: false
+
+- `node['xxx_template_xxx']['config_dir_recurse']`
+  If set to `true` (default `false`) the configuration directory files
+    and its subdirectories are managed recursively..
   Default: false
 
 Usage
