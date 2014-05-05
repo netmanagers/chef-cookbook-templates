@@ -23,8 +23,10 @@ desc 'Run all style checks'
 task style: ['style:chef', 'style:ruby']
 
 # Rspec and ChefSpec
-# desc "Run ChefSpec examples"
-# RSpec::Core::RakeTask.new(:spec)
+namespace :unit do
+  desc "Run ChefSpec tests"
+  RSpec::Core::RakeTask.new(:spec)
+end
 
 # Integration tests. Kitchen.ci
 namespace :integration do
@@ -39,4 +41,4 @@ end
 
 # Default
 desc 'Run all tests'
-task default: ['style', 'integration:vagrant']
+task default: ['style', 'unit', 'integration:vagrant']
