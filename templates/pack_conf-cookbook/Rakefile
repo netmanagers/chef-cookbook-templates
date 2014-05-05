@@ -23,9 +23,12 @@ desc 'Run all style checks'
 task style: ['style:chef', 'style:ruby']
 
 # Rspec and ChefSpec
-namespace :unit do
-  desc "Run ChefSpec tests"
-  RSpec::Core::RakeTask.new(:spec)
+desc "Run ChefSpec tests"
+RSpec::Core::RakeTask.new() do |t|
+  t.rspec_opts = [].tap do |a|
+   a.push('--color')
+   a.push('--format progress')
+  end.join(' ')
 end
 
 # Integration tests. Kitchen.ci
