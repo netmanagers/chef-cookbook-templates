@@ -18,7 +18,7 @@ end
 #
 remote_directory 'xxx_template_xxx.dir' do
   path node['xxx_template_xxx']['config_dir_path']
-  if [':remove', ':purge', ':delete'].include? node['xxx_template_xxx']['package_action']
+  if ['remove', 'purge', 'delete'].include? node['xxx_template_xxx']['package_action']
     action :delete
   else
     action :create
@@ -39,7 +39,7 @@ end
 # If we use a template
 template 'xxx_template_xxx.conf' do
   path node['xxx_template_xxx']['config_file_path']
-  if [':remove', ':purge', ':delete'].include? node['xxx_template_xxx']['package_action']
+  if ['remove', 'purge', 'delete'].include? node['xxx_template_xxx']['package_action']
     action :delete
   else
     action :create
@@ -54,7 +54,7 @@ end
 # If we source a file
 cookbook_file 'xxx_template_xxx.conf' do
   path node['xxx_template_xxx']['config_file_path']
-  if [':remove', ':purge', ':delete'].include? node['xxx_template_xxx']['package_action']
+  if ['remove', 'purge', 'delete'].include? node['xxx_template_xxx']['package_action']
     action :delete
   else
     action :create
