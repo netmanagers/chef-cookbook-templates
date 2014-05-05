@@ -30,7 +30,4 @@ suites:
   - name: default
     run_list: 
       - recipe[xxx_template_xxx::default]
-    attributes:
-      xxx_template_xxx:
-        install_method: package
 
