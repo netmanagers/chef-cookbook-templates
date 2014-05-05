@@ -23,7 +23,7 @@ remote_directory 'xxx_template_xxx.dir' do
   else
     action :create
   end
-  only_if node['xxx_template_xxx']['config_dir_source']
+  only_if { node['xxx_template_xxx']['config_dir_source'] }
   purge node['xxx_template_xxx']['config_dir_purge']
   recursive node['xxx_template_xxx']['config_dir_recurse']
   files_owner node['xxx_template_xxx']['config_file_owner']
@@ -44,7 +44,7 @@ template 'xxx_template_xxx.conf' do
   else
     action :create
   end
-  only_if node['xxx_template_xxx']['config_file_template']
+  only_if { node['xxx_template_xxx']['config_file_template'] }
   source "#{node['xxx_template_xxx']['config_file_template']}.erb"
   owner node['xxx_template_xxx']['config_file_owner']
   group node['xxx_template_xxx']['config_file_group']
@@ -59,7 +59,7 @@ cookbook_file 'xxx_template_xxx.conf' do
   else
     action :create
   end
-  only_if node['xxx_template_xxx']['config_file_source']
+  only_if { node['xxx_template_xxx']['config_file_source'] }
   owner node['xxx_template_xxx']['config_file_owner']
   group node['xxx_template_xxx']['config_file_group']
   mode node['xxx_template_xxx']['config_file_mode']
