@@ -23,11 +23,11 @@ desc 'Run all style checks'
 task style: ['style:chef', 'style:ruby']
 
 # Rspec and ChefSpec
-desc "Run ChefSpec tests"
-RSpec::Core::RakeTask.new() do |t|
+desc 'Run ChefSpec tests'
+RSpec::Core::RakeTask.new do |t|
   t.rspec_opts = [].tap do |a|
-   a.push('--color')
-   a.push('--format documentation')
+    a.push('--color')
+    a.push('--format documentation')
   end.join(' ')
 end
 
