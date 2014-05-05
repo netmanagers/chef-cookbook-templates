@@ -1,7 +1,7 @@
 require_relative '../../spec_helper'
 
 describe 'xxx_template_xxx::default' do
-  context 'installs xxx_template_xxx with no extra options' do
+  context 'when attributes are the cookbook\'s default' do
     let(:chef_run) do
       runner = ChefSpec::Runner.new(
         :platform => 'centos',
@@ -9,16 +9,16 @@ describe 'xxx_template_xxx::default' do
       ).converge('xxx_template_xxx::default')
     end
 
-    it 'installs the distro package' do
+    it 'installs the distro\'s package' do
       expect(chef_run).to install_package('xxx_template_xxx')
     end
-    it 'leave configuration as the distro package says' do
+    it 'leave configuration as the distro\'s package specifies' do
       expect(chef_run).to_not create_template('xxx_template_xxx.conf')
       expect(chef_run).to_not create_remote_directory('xxx_template_xxx.dir')
       expect(chef_run).to_not create_cookbook_file('xxx_template_xxx.conf')
     end
 
-    context 'version attribute is set' do
+    context 'when [\'package_version\'] attribute is set' do
       let(:chef_run) do
         runner = ChefSpec::Runner.new(
           :platform => 'centos',
@@ -28,13 +28,13 @@ describe 'xxx_template_xxx::default' do
         runner.converge('xxx_template_xxx::default')
       end
 
-      it 'installs the distro package with a specific version' do
+      it 'installs the distro\'s package with a specific version' do
         expect(chef_run).to install_package('xxx_template_xxx').with( :version => '3.2.1') 
       end
     end
   end
 
-  context 'if package_action => remove' do
+  context 'when [\'package_action\'] => remove' do
     let(:chef_run) do
       runner = ChefSpec::Runner.new(
         :platform => 'centos',
@@ -47,7 +47,7 @@ describe 'xxx_template_xxx::default' do
     it 'removes the package' do
       expect(chef_run).to remove_package('xxx_template_xxx')
     end
-    it 'removes/leave the configuration directory and files according to package instructions' do
+    it 'removes/leave the configuration directory and files (according to package instructions)' do
       expect(chef_run).to_not delete_template('xxx_template_xxx.conf')
       expect(chef_run).to_not delete_remote_directory('xxx_template_xxx.dir')
       expect(chef_run).to_not delete_cookbook_file('xxx_template_xxx.conf')
