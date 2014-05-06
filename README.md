@@ -11,7 +11,7 @@ cookbooks that can be used as **blueprint** for the (quick) generation of new
 basic cookbooks of different nature, upon which the relevant customizations can
 be done.
 
-[A set of common attributes](Attributes_List) (and possibly community standard) greatly enhances
+[A set of common attributes](Attributes_List.md) (and possibly community standard) greatly enhances
 cookbooks usability and interoperability. These cookbooks templates
 implement an early proposal for a **Standard Cookbook Interface**: a
 set of common and standard attributes that provide standard and predictable
