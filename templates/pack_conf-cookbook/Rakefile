@@ -44,4 +44,4 @@ end
 
 # Default
 desc 'Run all tests'
-task default: ['style', 'unit', 'integration:vagrant']
+task default: ['style', 'spec', 'integration:vagrant']
