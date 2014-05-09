@@ -1,6 +1,7 @@
 require_relative '../../spec_helper'
 
 describe 'xxx_template_xxx::default' do
+  ###
   context 'when the cookbook is used with default attributes' do
     let(:chef_run) do
       runner = ChefSpec::Runner.new(
@@ -20,6 +21,7 @@ describe 'xxx_template_xxx::default' do
     end
   end
 
+  ###
   context 'when the [\'package_version\'] attribute is given a value' do
     let(:chef_run) do
       runner = ChefSpec::Runner.new(
@@ -40,6 +42,7 @@ describe 'xxx_template_xxx::default' do
     end
   end
 
+  ###
   context 'when [\'package_action\'] is set to one of {remove,purge,delete}' do
     let(:chef_run) do
       runner = ChefSpec::Runner.new(
@@ -60,6 +63,7 @@ describe 'xxx_template_xxx::default' do
     end
   end
 
+  ###
   context 'when setting [\'config_file_template\'] and [\'config_file_source\'] at the same time' do
     let(:chef_run) do
       runner = ChefSpec::Runner.new(
@@ -78,6 +82,23 @@ describe 'xxx_template_xxx::default' do
     end
   end
 
+  ###
+  context 'when pulling the whole config dir from a source via the [\'config_dir_source\'] attribute' do
+    let(:chef_run) do
+      runner = ChefSpec::Runner.new(
+        :platform => 'debian',
+        :version => '7.4'
+      )
+      runner.node.set['xxx_template_xxx']['config_dir_source'] = 'some_source'
+      runner.converge('xxx_template_xxx::default')
+    end
+
+    it 'pulls the whole configuration __DIR__ from a source' do
+      expect(chef_run).to create_remote_directory('xxx_template_xxx.dir')
+    end
+  end
+
+  ###
   context 'when providing a config template via the [\'config_file_template\'] attribute' do
     let(:chef_run) do
       runner = ChefSpec::Runner.new(
@@ -99,6 +120,7 @@ describe 'xxx_template_xxx::default' do
     end
   end
 
+  ###
   context 'when pulling a config file from a source via the [\'config_file_source\'] attribute' do
     let(:chef_run) do
       runner = ChefSpec::Runner.new(
