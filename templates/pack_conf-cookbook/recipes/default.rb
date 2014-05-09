@@ -32,11 +32,9 @@ end
 
 # We can't specify both template && source for a file
 #
-raise '[\'xxx_template_xxx\'][\'config_file_template\'] && '\
-      '[\'xxx_template_xxx\'][\'config_file_source\'] can\'t both be set at the same time' \
+fail '[\'xxx_template_xxx\'][\'config_file_template\'] && '\
+     '[\'xxx_template_xxx\'][\'config_file_source\'] can\'t both be set at the same time' \
   if node['xxx_template_xxx']['config_file_template'] && node['xxx_template_xxx']['config_file_source']
-
-#raise 'Error' if ( node['xxx_template_xxx']['config_file_template'] && node['xxx_template_xxx']['config_file_source'] )
 
 # If we use a template
 template 'xxx_template_xxx.conf' do
