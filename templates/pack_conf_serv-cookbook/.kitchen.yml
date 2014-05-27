@@ -1,0 +1,33 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+
+platforms:
+  - name: opscode-debian-7.4
+    driver_config:
+      box: opscode-debian-7.4
+      box_url: http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_debian-7.4_chef-provisionerless.box
+
+  - name: opscode-ubuntu-14.04
+    driver_config:
+      box: opscode-ubuntu-14.04
+      box_url: http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_ubuntu-14.04_chef-provisionerless.box
+
+  - name: opscode-centos-6.5
+    driver_config:
+      box: opscode-centos-6.5
+      box_url: http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_centos-6.5_chef-provisionerless.box
+
+  - name: opscode-centos-5.10
+    driver_config:
+      box: opscode-centos-5.10
+      box_url: http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_centos-5.10_chef-provisionerless.box
+
+suites:
+  - name: default
+    run_list: 
+      - recipe[xxx_template_xxx::default]
+
