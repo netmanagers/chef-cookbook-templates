@@ -178,11 +178,11 @@ describe 'xxx_template_xxx::default' do
       # This is a stub test, as you need to include_recipe before being able to notify services
       # on other recipes: https://github.com/sethvargo/chefspec/issues/121
       # Apparently you cannot just mock them.
-      runner.node.set['xxx_template_xxx']['services_notifies'] = [ ['reload', 'service[xxx_template_xxx]', 'delayed'] ]
+      runner.node.set['xxx_template_xxx']['services_notifies'] = [['reload', 'service[xxx_template_xxx]', 'delayed']]
 
-#      runner.node.set['xxx_template_xxx']['services_notifies'] = [ ['reload', 'service[xxx_template_xxx]', 'delayed'],
-#                                                                   ['restart','service[another_service]', 'immediately'],
-#                                                                   ['run', 'execute[test-nagios-config]', 'immediately'] ]
+      #      runner.node.set['xxx_template_xxx']['services_notifies'] = [['reload', 'service[xxx_template_xxx]', 'delayed'],
+      #                                                                   ['restart','service[another_service]', 'immediately'],
+      #                                                                   ['run', 'execute[test-nagios-config]', 'immediately']]
 
       runner.converge('xxx_template_xxx::default')
     end
@@ -191,14 +191,14 @@ describe 'xxx_template_xxx::default' do
       resource = chef_run.template('xxx_template_xxx.conf')
       expect(resource).to notify('service[xxx_template_xxx]').to(:reload).delayed
     end
-#    it 'notifies "service[another_service]" to restart immediately' do
-#      resource = chef_run.template('xxx_template_xxx.conf')
-#      expect(resource).to notify('service[notification1]').to(:restart).immediately
-#    end
-#    it 'notifies "execute[test-nagios-config]" to run immediately' do
-#      resource = chef_run.template('xxx_template_xxx.conf')
-#      expect(resource).to notify('execute[notification2]').to(:run).immediately
-#    end
+    #    it 'notifies "service[another_service]" to restart immediately' do
+    #      resource = chef_run.template('xxx_template_xxx.conf')
+    #      expect(resource).to notify('service[notification1]').to(:restart).immediately
+    #    end
+    #    it 'notifies "execute[test-nagios-config]" to run immediately' do
+    #      resource = chef_run.template('xxx_template_xxx.conf')
+    #      expect(resource).to notify('execute[notification2]').to(:run).immediately
+    #    end
   end
 
   #### SERVICE TESTS
@@ -209,7 +209,7 @@ describe 'xxx_template_xxx::default' do
         :platform => 'centos',
         :version => '6.5'
       )
-      runner.node.set['xxx_template_xxx']['service_actions'] = [ 'stop', 'enable' ]
+      runner.node.set['xxx_template_xxx']['service_actions'] = %w('stop', 'enable')
       runner.converge('xxx_template_xxx::default')
     end
 

@@ -19,11 +19,11 @@ default['xxx_template_xxx']['config_dir_path'] = '/etc/xxx_template_xxx'
 default['xxx_template_xxx']['config_dir_source'] = nil
 default['xxx_template_xxx']['config_dir_purge'] = false
 
-default['xxx_template_xxx']['services_notifies'] = [ ['reload', 'service[xxx_template_xxx]', 'delayed'] ]
+default['xxx_template_xxx']['services_notifies'] = [['reload', 'service[xxx_template_xxx]', 'delayed']]
 
 default['xxx_template_xxx']['service_name'] = 'xxx_template_xxx'
-default['xxx_template_xxx']['service_actions'] = [ 'enable', 'start' ]
-default['xxx_template_xxx']['service_supports'] = [ :restart => true, :status => true ]
+default['xxx_template_xxx']['service_actions'] = %w('enable', 'start')
+default['xxx_template_xxx']['service_supports'] = [:restart => true, :status => true]
 default['xxx_template_xxx']['service_pattern'] = nil
 default['xxx_template_xxx']['service_reload_command'] = nil
 default['xxx_template_xxx']['service_restart_command'] = nil
