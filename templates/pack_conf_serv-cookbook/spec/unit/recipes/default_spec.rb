@@ -26,7 +26,7 @@ describe 'xxx_template_xxx::default' do
   end
 
   ###
-  context 'when the [\'package_version\'] attribute is given a value' do
+  context "when the ['package_version'] attribute is given a value" do
     let(:chef_run) do
       runner = ChefSpec::Runner.new(
         :platform => 'centos',
@@ -47,7 +47,7 @@ describe 'xxx_template_xxx::default' do
   end
 
   ###
-  context 'when [\'package_action\'] is set to one of {remove,purge,delete}' do
+  context "when ['package_action'] is set to one of {remove,purge,delete}" do
     let(:chef_run) do
       runner = ChefSpec::Runner.new(
         :platform => 'centos',
@@ -73,7 +73,7 @@ describe 'xxx_template_xxx::default' do
 
   #### CONFIG TESTS
   ###
-  context 'when setting [\'config_file_template\'] and [\'config_file_source\'] at the same time' do
+  context "when setting ['config_file_template'] and ['config_file_source'] at the same time" do
     let(:chef_run) do
       runner = ChefSpec::Runner.new(
         :platform => 'centos',
@@ -85,14 +85,14 @@ describe 'xxx_template_xxx::default' do
     end
 
     it 'raises a fatal error' do
-      expect { chef_run }.to raise_error('[\'xxx_template_xxx\'][\'config_file_template\'] && '\
-                                         '[\'xxx_template_xxx\'][\'config_file_source\'] can\'t '\
+      expect { chef_run }.to raise_error("['xxx_template_xxx']['config_file_template'] && "\
+                                         "['xxx_template_xxx']['config_file_source'] can't "\
                                          'both be set at the same time')
     end
   end
 
   ###
-  context 'when pulling the whole config dir from a source via the [\'config_dir_source\'] attribute' do
+  context "when pulling the whole config dir from a source via the ['config_dir_source'] attribute" do
     let(:chef_run) do
       runner = ChefSpec::Runner.new(
         :platform => 'debian',
@@ -113,7 +113,7 @@ describe 'xxx_template_xxx::default' do
   end
 
   ###
-  context 'when providing a config template via the [\'config_file_template\'] attribute' do
+  context "when providing a config template via the ['config_file_template'] attribute" do
     let(:chef_run) do
       runner = ChefSpec::Runner.new(
         :platform => 'centos',
@@ -140,7 +140,7 @@ describe 'xxx_template_xxx::default' do
   end
 
   ###
-  context 'when pulling a config file from a source via the [\'config_file_source\'] attribute' do
+  context "when pulling a config file from a source via the ['config_file_source'] attribute" do
     let(:chef_run) do
       runner = ChefSpec::Runner.new(
         :platform => 'centos',
@@ -167,7 +167,7 @@ describe 'xxx_template_xxx::default' do
   end
 
   ###
-  context 'when specifying multiple services to notify via the [\'services_notifies\'] attribute (please check this section in the spec file)' do
+  context "when specifying multiple services to notify via the ['services_notifies'] attribute (please check this section in the spec file)" do
     let(:chef_run) do
       runner = ChefSpec::Runner.new(
         :platform => 'centos',
@@ -203,7 +203,7 @@ describe 'xxx_template_xxx::default' do
 
   #### SERVICE TESTS
   ###
-  context 'when [\'service_actions\'] attribute has other values than the defaults' do
+  context "when ['service_actions'] attribute has other values than the defaults" do
     let(:chef_run) do
       runner = ChefSpec::Runner.new(
         :platform => 'centos',
