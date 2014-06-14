@@ -209,7 +209,7 @@ describe 'xxx_template_xxx::default' do
         :platform => 'centos',
         :version => '6.5'
       )
-      runner.node.set['xxx_template_xxx']['service_actions'] = %w('stop', 'enable')
+      runner.node.set['xxx_template_xxx']['service_actions'] = %w(stop, enable)
       runner.converge('xxx_template_xxx::default')
     end
 
