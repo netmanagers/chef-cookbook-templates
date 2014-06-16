@@ -36,10 +36,10 @@ while [ ${#} -gt 0 ]; do
   -n)
     name="${2}"
     shift 2 ;;
+  *)
+    showhelp ;;
   esac
 done
-
-showhelp
 
 clone_from_template() {
   if [ ! -f "templates/${template}-cookbook/recipes/default.rb" ] ; then
@@ -107,7 +107,7 @@ function clone() {
 
   echo "RENAMING FILES"
     for file in $( find ${NEWMODULE} -type f | grep ${OLDMODULESTRING} ) ; do
-    newfile=`echo ${file} | sed "s/${OLDMODULESTRING}/${NEWMODULE}/g"`
+    newfile=`echo ${file} | sed "s/${OLDMODULESTRING}/${name}/g"`
     echo "${file} => ${newfile}" ;  mv ${file} ${newfile} && echo "Renamed ${file} to ${newfile}"
   done
 
@@ -124,8 +124,6 @@ function clone() {
   done
 
   echo "Module ${NEWMODULE} created"
-  echo "Start to edit ${NEWMODULE}/manifests/params.pp to customize it"
-
 }
 
 if [ "x${cookbook}" == "x" ] ; then
