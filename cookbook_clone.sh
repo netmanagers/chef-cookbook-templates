@@ -50,6 +50,12 @@ clone_from_template() {
     exit 1
   fi
 
+  # Clone stuff common to all templates
+  OLDMODULE="templates/common"
+  OLDMODULESTRING="xxx_template_xxx"
+
+  clone
+
   OLDMODULE="templates/${template}-cookbook"
   OLDMODULESTRING="xxx_template_xxx"
 

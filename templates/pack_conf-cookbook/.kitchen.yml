@@ -1,9 +1,12 @@
 ---
 driver:
   name: vagrant
+  customize:
+    memory: 1024
 
 provisioner:
   name: chef_zero
+  require_chef_omnibus: latest
 
 platforms:
   - name: opscode-debian-7.4
@@ -28,6 +31,6 @@ platforms:
 
 suites:
   - name: default
-    run_list: 
-      - recipe[xxx_template_xxx::default]
+    run_list:
+      - recipe[common::default]
 

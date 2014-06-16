@@ -1,9 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'chefspec',            '~> 4'
-gem 'rspec',               '~> 3'
-gem 'rspec-expectations',  '~> 3'
-gem 'berkshelf',           '~> 3'
+gem 'chefspec',   '~> 4'
+gem 'berkshelf',  '~> 3'
 gem 'rake'
 gem 'rubocop'
 gem 'foodcritic'
@@ -16,4 +14,5 @@ end
 group :integration do
   gem 'test-kitchen'
   gem 'kitchen-vagrant'
+  gem 'kitchen-docker'
 end
