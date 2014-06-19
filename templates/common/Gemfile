@@ -7,8 +7,8 @@ gem 'rubocop'
 gem 'foodcritic'
 
 group :plugins do
-  gem "vagrant-berkshelf", github: "berkshelf/vagrant-berkshelf"
-  gem "vagrant-omnibus", github: "schisamo/vagrant-omnibus"
+  gem 'vagrant-berkshelf', github: 'berkshelf/vagrant-berkshelf'
+  gem 'vagrant-omnibus', github: 'schisamo/vagrant-omnibus'
 end
 
 group :integration do
