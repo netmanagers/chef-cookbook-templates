@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: xxx_template_xxx-coobook
+# Cookbook Name:: xxx_template_xxx
 # Recipe:: default
 #
 # Copyright (C) 2014, Javier Bertoli
